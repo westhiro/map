@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE HTML>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <title>Blog</title>
+    </head>
+    <body>
+        <h1>タイトル</h1>
+        <form action="/reviews" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="prefecture">
+                  <h2>都道府県選択</h2>
+                  <select name="review[prefecture_id]">
+                        @foreach($prefectures as $prefecture)
+                          <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
+                        @endforeach
+                  </select>
+            </div>
+            <div class="spot_name">
+                <h2>観光名所名</h2>
+                <input type="text" name="review[spot_name]" placeholder="観光名所名" value="{{ old('review.spot_name') }}"/>
+                <p class="spot_name__error" style="color:red">{{ $errors->first('review.spot_name') }}</p>
+            </div>
+             <div class="city_name">
+                <h2>市町村</h2>
+                <input type="text" name="review[city_name]" placeholder="○○市" value="{{ old('review.city_name') }}"/>
+            　　<p class="city_name__error" style="color:red">{{ $errors->first('review.city_name') }}</p>
+            </div>
+            <div class="date">
+                <h2>日付</h2>
+                <input type="text" name="review[date]" placeholder="0000-00-00" value="{{ old('review.date') }}"/>
+            　　<p class="date__error" style="color:red">{{ $errors->first('review.date') }}</p>
+            </div>
+            <div class="body">
+                <h2>内容</h2>
+                <textarea name="review[body]" placeholder="">{{ old('review.body') }}</textarea>
+                <p class="body__error" style="color:red">{{ $errors->first('review.body') }}</p>
+            </div>
+            <div class ="image"></div>
+                <input type="file" name="image">
+         
+            <div class="evaluation">
+              <p>5段階評価</p>
+              <div class="stars">
+                <span>
+                  <input  type="radio" name="review[evaluation]" value="1"><label for="review01">★</label>
+                  <input  type="radio" name="review[evaluation]" value="2"><label for="review02">★★</label>
+                  <input  type="radio" name="review[evaluation]" value="3"><label for="review03">★★★</label>
+                  <input  type="radio" name="review[evaluation]" value="4"><label for="review04">★★★★</label>
+                  <input  type="radio" name="review[evaluation]" value="5"><label for="review05">★★★★★</label>
+                </span>
+              </div>
+            </div>
+            
+             <input type="submit" value="保存"/>
+        </form>
+        <img src="https://res.cloudinary.com/dzkpojxdc/image/upload/v1671452446/eckb8xncuuozk5wzysvk.png">
+
+        <div class="back">[<a href="/">戻る</a>]</div>
+        
+
+    </body>
+</html>
+

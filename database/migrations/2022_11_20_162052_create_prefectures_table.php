@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name',50);
+        Schema::create('prefectures', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
 };

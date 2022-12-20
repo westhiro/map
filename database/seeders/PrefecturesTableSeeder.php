@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -66,10 +65,9 @@ class PrefecturesTableSeeder extends Seeder
     public function run()
     {
         //
-    
         foreach ($this->prefectures as $prefecture) {
-            DB::table("posts")->insert([
-               "name" => $prefecture
+           DB::table('prefectures')->insert([
+               'name' => $prefecture
             ]);
         }
     }
