@@ -22,4 +22,15 @@ class ReviewRequest extends FormRequest
             'review.evaluation' =>  'required|integer',
         ];
     }
+    
+    public function messages()
+    {
+        return [
+            'review.spot_name' => '観光名所名が入力されていません',
+            'review.date' => '日付が入力されていません',
+            'review.body' => '内容が入力されていません',
+            'review.city_name' => '都市名が入力されていません',
+            'review.evaluation' => '評価が入力されていません',
+        ];
+    }
 }
