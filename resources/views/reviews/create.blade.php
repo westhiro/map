@@ -5,6 +5,7 @@
     <head>
         <meta charset="utf-8">
         <title>Blog</title>
+         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/css/create.css') }}">
     </head>
     <body>
@@ -43,7 +44,7 @@
                 <input type="file" name="image">
             <div class="evaluation">
               <h2>5段階評価</h2>
-              <div class="stars" name="review[evaluation]">
+              <div class="stars">
               <p class="evaluation__error" style="color:red">{{ $errors->first('review.evaluation') }}</p>
                   <input  type="radio" name="review[evaluation]" value="1"><label for="review01">★</label>
                   <input  type="radio" name="review[evaluation]" value="2"><label for="review02">★★</label>
@@ -58,8 +59,6 @@
             </div>
         </form>
         <div class="back">[<a href="/">戻る</a>]</div>
-        
-
     </body>
 </html>
 

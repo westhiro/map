@@ -12,9 +12,9 @@ class TopPageController extends Controller
     public function index(Prefecture $prefecture, Review $review)
     {
         $prefecture_average = Review::select('prefecture_id')
-         ->selectRaw('AVG(evaluation) as evaluation')
+         ->selectRaw('AVG(evaluation) as evaluate')
          ->groupBy('prefecture_id')
-         ->orderBy('evaluation')->having('evaluation', '>=', 3.5)
+         ->orderBy('evaluate')->having('evaluate', '>=', 3.5)
          ->with('prefecture')
          ->get();
          
