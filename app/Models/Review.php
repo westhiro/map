@@ -46,4 +46,15 @@ class Review extends Model
     {
         return $this::with('prefecture')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+    public function order($select)
+    {
+        if($select == 'asc'){
+            return $this->orderBy('created_at', 'asc')->get();
+        } elseif($select == 'desc') {
+            return $this->orderBy('created_at', 'desc')->get();
+        } else {
+            return $this->all();
+        }
+    }
 }

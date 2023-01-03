@@ -1,1 +1,11 @@
-h1 {color: #ffffff;}
+.prefecture {
+    display: inline;
+}
+
+.create, .mypage, .prefecture_rank, .spot_rank {
+    text-align: right;
+}
+
+.prefecture_rank, .spot_rank {
+   vertical-align:text-top;
+}

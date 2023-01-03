@@ -18,7 +18,8 @@ class ReviewRequest extends FormRequest
             'review.spot_name' => 'required|string|max:100',
             'review.date' => 'required|string|max:100',
             'review.body' => 'required|string|max:4000',
-            'review.city_name' => 'required|string|max:100'
+            'review.city_name' => 'required|string|max:100',
+            'review.evaluation' =>  'required|integer',
         ];
     }
 }

@@ -1,0 +1,17 @@
+.submit {
+    font-size: 200%    
+}
+
+.submit, .back {
+    text-align: right;
+}
+
+.prefecture_name, .spot_name, .city_name, .spot_date, .spot_body
+{
+    font-size: 30px;
+}
+
+.stars {
+    font-size: 25px;
+    color: #F8C601;  
+}

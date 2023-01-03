@@ -23,19 +23,18 @@ use App\Http\Controllers\My_pageController;
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', [TopPageController::class, 'index'])->name('TopPage');
     Route::get('/search', [SearchController::class, 'search']);
+    Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit']);
+    Route::get('/search/{prefecture_id}', [SearchController::class, 'search_index']);
     Route::get('/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
     Route::get('/reviews/{prefecture}', [ReviewController::class, 'index']);
     Route::get('/reviews/{prefecture}/{review}', [ReviewController::class, 'show']); 
     Route::post('/reviews', [ReviewController::class, 'store']);
-    Route::get('/reviews/{prefecture}/{review}/edit', [ReviewController::class, 'edit']);
     Route::put('/reviews/{review}', [ReviewController::class, 'update']);
     Route::delete('//reviews/{review}', [ReviewController::class, 'delete']);
-    //Route::get('/user', 'App\Http\Controllers\UserController@index');
+    Route::delete('/reviews/deleteimage/{review}', [ReviewController::class, 'deleteimage']);
     Route::get('/reply/nice/{review}', [ReviewController::class, 'nice']);
     Route::get('/reply/unnice/{review}', [ReviewController::class, 'unnice']);
     Route::get('/my_page', [My_pageController::class, 'index']);
-    //Route::get('/reviews/create', [CloudinaryController::class, 'cloudinary']);
-    //Route::post('/reviews/create', [CloudinaryController::class, 'cloudinary_store']); 
 });
    
     Route::get('/dashboard', function () {

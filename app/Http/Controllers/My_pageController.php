@@ -8,17 +8,22 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Review;
 use App\Models\User;
-use App\Models\User_review;
+use App\Models\Prefecture;
+
 
 class My_pageController extends Controller
 {
     //
-    public function index(Review $review, User $user)
+    public function index(User $user, Review $review, Prefecture $prefecture)
     {
-        $id = Auth::id();
-        $user = DB::table('users')->find($id);
-        $reviews = DB::table('reviews')->find($id);
-        $nice = User_review::where('review_id', $review->id)->where('user_id', auth()->user()->id)->first();
-        return view('reviews/my_page')->with(['my_user' => $user, 'my_review' => $reviews, 'reviews' => $review, 'nice' => $nice]);
+        $user_id = Auth::id();
+        $own_reviews = $review->where("user_id", $user_id)->get();
+        $nices =  Auth::user()->nices;
+        $review_list = [];
+        foreach($nices as $nice)
+        {
+            $review_list[] = $nice->id;
+        }
+        return view('reviews/my_page')->with(['my_user' => Auth::user(), 'own_reviews' => $own_reviews, 'nices' => $nices, 'prefecture' => $prefecture]);
     }
 }

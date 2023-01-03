@@ -51,5 +51,6 @@
                 </x-primary-button>
             </div>
         </form>
+        <a href="https://e67891af82764c5ba3693ab6355a12b1.vfs.cloud9.ap-northeast-1.amazonaws.com/register">新規ユーザー登録</a>
     </x-auth-card>
 </x-guest-layout>

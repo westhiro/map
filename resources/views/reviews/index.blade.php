@@ -1,5 +1,5 @@
+<x-app-layout>
 
-    
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,37 +7,54 @@
         <title>Blog</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('/css/index.css') }}">
     </head>
     <body>
-        <h2>タイムライン</h2>
-        <div>
-          <form action="/search" method="GET">
-        
-          @csrf
-        
-            <input type="text" name="keyword">
-            <input type="submit" value="検索">
-          </form>
+        <div class="prefecture">
+            <h1>{{ $prefecture->name }}</h1>
         </div>
-        <div class='reviews'>
-          @foreach ($reviews as $review)
-               <a href =" {{ url('/user') }}">{{ $review->user->name }}さん</a>
-                <div class='review'>
-                   <h3 class='spot_name'>
-                    <a href="/reviews/{{ $prefecture->id }}/{{ $review->id }}">{{ $review->spot_name }}</a>
-                    </h3>
-                    <p class='city_name'>{{ $review->city_name }}</p>
-                    <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" onclick="deleteReview({{ $review->id }})">delete</button> 
-                    </form>
-                </div>
-          @endforeach
-           <a href='/reviews/create'>新規投稿</a>
-           <div class="back">[<a href="/">戻る</a>]</div>
-        </div>
-    　 <script>
+            <div class="search">
+              <form action="/search/{{ $prefecture->id }}" method="GET">
+              @csrf
+                <input type="text" name="keyword" placeholder="観光名所名"> 
+                <input type="hidden" name="prefecture_id" value="{{ $prefecture->id }}">
+                <input type="submit" value="検索">
+              </form>
+            </div>
+            <div class="create">
+                <a href='/reviews/create'>新規投稿</a>
+            </div>
+            <div class="back">[<a href="/">戻る</a>]</div>
+            <div class='reviews'>
+                <h2>タイムライン</h2>
+                @foreach ($reviews as $review)
+                    <div class='review'>
+                       <p>ユーザー名:{{ $review->user->name }}さん</p>
+                        <a href="/reviews/{{ $prefecture->id }}/{{ $review->id }}">観光名所名:{{ $review->spot_name }}</a>
+                        <p class='city_name'>市町村:{{ $review->city_name }}</p>
+                        <div class="stars">
+                            @if (($review->evaluation) == 1) 
+                                <p>★
+                            @elseif (($review->evaluation) == 2)
+                                <p>★★
+                            @elseif (($review->evaluation) == 3) 
+                                <p>★★★
+                            @elseif (($review->evaluation) == 4)
+                                <p>★★★★
+                            @else
+                                <p>★★★★★</p>
+                            @endif  
+                        </div>
+                        <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="deleteReview({{ $review->id }})">delete</button> 
+                        </form>
+                    </div>
+                @endforeach
+            </div>
+                {{ $reviews->links() }}
+    　  <script>
             function deleteReview(id) {
                 'use strict'
                 if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
@@ -47,3 +64,5 @@
         </script>
     </body>
 </html>
+
+</x-app-layout>
