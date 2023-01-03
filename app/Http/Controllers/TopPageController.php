@@ -25,6 +25,6 @@ class TopPageController extends Controller
          //->get();
          //dd($spot_average);
          //dd($prefecture_average);
-        return view('reviews/TopPage')->with(['review' => $review, 'prefectures' => $prefecture->get(), 'prefecture_averages' => $prefecture_average, 'spot_averages' => $spot_average]);
+        return view('reviews/TopPage')->with(['review' => $review, 'prefectures' => $prefecture->get()]); //'prefecture_averages' => $prefecture_average, 'spot_averages' => $spot_average]);
     }
 }
