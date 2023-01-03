@@ -16,11 +16,15 @@ class SearchRequest extends FormRequest
     {
         return [
             'keyword' => 'required|string',
+            'keyword_review' => 'required|string'
         ];
     }
     
     public function messages()
     {
-        return ['keyword' => '検索ワードを入力してください'];
+        return [
+            'keyword' => '検索ワードを入力してください',
+            'keyword_review' => '検索ワードが入力されていません'
+        ];
     }
 }

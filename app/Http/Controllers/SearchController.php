@@ -16,16 +16,12 @@ class SearchController extends Controller
 
          
            Review::all();
-
-
+           
+           
         $keyword = $request->input('keyword');
         if(!empty($keyword)) {
-            $reviews=$review->where('spot_name', 'LIKE', "%{$keyword}%")->get();
+            $reviews = $review->where('spot_name', 'LIKE', "%{$keyword}%")->get();
             return view('reviews/search')->with(['reviews' => $reviews, 'prefecture' => $prefecture]);
-        }
-        
-        if(empty($keyword)) {
-            return '入力されていません';
         }
     }
     

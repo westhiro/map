@@ -71,9 +71,6 @@
                     @endif
                     </span>
         </div>
-        <div class="edit">
-            <a href="/reviews/{{ $prefecture->id }}/{{ $review->id }}/edit">編集</a>
-        </div>
         <div class="footer">
             <a href="/reviews/{{ $prefecture->id }}">戻る</a>
         </div>

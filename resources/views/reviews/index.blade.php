@@ -14,11 +14,13 @@
             <h1>{{ $prefecture->name }}</h1>
         </div>
             <div class="search">
+                
               <form action="/search/{{ $prefecture->id }}" method="GET">
               @csrf
                 <input type="text" name="keyword" placeholder="観光名所名"> 
                 <input type="hidden" name="prefecture_id" value="{{ $prefecture->id }}">
                 <input type="submit" value="検索">
+                <p class="search__error" style="color:red">{{ $errors->first('keyword') }}</p>
               </form>
             </div>
             <div class="create">
@@ -45,23 +47,10 @@
                                 <p>★★★★★</p>
                             @endif  
                         </div>
-                        <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deleteReview({{ $review->id }})">delete</button> 
-                        </form>
                     </div>
                 @endforeach
             </div>
                 {{ $reviews->links() }}
-    　  <script>
-            function deleteReview(id) {
-                'use strict'
-                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                    document.getElementById(`form_${id}`).submit();
-                }
-        　　}
-        </script>
     </body>
 </html>
 

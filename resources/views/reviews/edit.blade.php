@@ -53,7 +53,7 @@
             @method('delete')
             <input type="submit" value="画像を削除">
         </form>
-         <div class="back">[<a href="/reviews/{{ $prefecture->id }}/{{ $review->id }}">戻る</a>]</div>
+         <div class="back">[<a href="/my_page">戻る</a>]</div>
     </div>
 </body>
 </html>
