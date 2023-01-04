@@ -39,11 +39,12 @@ class ReviewController extends Controller
     public function store(Review $review, ReviewRequest $request, Prefecture $prefecture)
     {
         $review->evaluation=$review->where('prefecture_id', $prefecture->id)->avg('evaluation');
+        $review -> user_id = \Auth::id(); 
         
-        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         
         $input = $request['review'];
-        $input += ['user_id' => $request->user()->id];
+        $input += ['image_path' => $image_path];
         $review->fill($input)->save();
         return redirect('/');
     }

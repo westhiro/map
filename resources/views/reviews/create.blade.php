@@ -41,7 +41,9 @@
                     <textarea class="spot_body" name="review[body]">{{ old('review.body') }}</textarea>
                     <p class="body__error" style="color:red">{{ $errors->first('review.body') }}</p>
                 </div>
+                    
                     <input type="file" name="image">
+                
                 <div class="evaluation">
                   <h2>5段階評価</h2>
                   <div class="stars">
