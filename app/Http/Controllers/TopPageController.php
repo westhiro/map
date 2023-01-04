@@ -12,16 +12,16 @@ class TopPageController extends Controller
     public function index(Prefecture $prefecture, Review $review)
     {
         $prefecture_average = Review::select('prefecture_id')
-         ->selectRaw('AVG(evaluation) as evaluate')
+         ->selectRaw('AVG(evaluation) as evaluation')
          ->groupBy('prefecture_id')
-         ->orderBy('evaluate')->having('evaluate', '>=', 3.5)
+         ->orderBy('evaluation')->having('evaluation', '>=', 3.5)
          ->with('prefecture')
          ->get();
          
          $spot_average=Review::select('spot_name')
-         ->selectRaw('AVG(evaluation) as evaluate')
+         ->selectRaw('AVG(evaluation) as evaluation')
          ->groupBy('spot_name')
-         ->orderBy('evaluate')->having('evaluate', '>=', 3.5)
+         ->orderBy('evaluation')->having('evaluation', '>=', 3.5)
          ->get(); 
          //dd($spot_average);
          //dd($prefecture_average);

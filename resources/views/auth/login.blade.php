@@ -51,6 +51,6 @@
                 </x-primary-button>
             </div>
         </form>
-        <a href="/">新規ユーザー登録</a>
+        <a href="https://quiet-scrubland-31811.herokuapp.com/register">新規ユーザー登録</a>
     </x-auth-card>
 </x-guest-layout>
