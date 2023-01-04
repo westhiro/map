@@ -25,7 +25,7 @@
         <div class="create">
             <a href="/reviews/create">新規投稿</a>
         </div>
-        {{--<div class='prefecture_rank'>
+        <div class='prefecture_rank'>
             <p>平均評価が3.5以上の都道府県</p>
                 @foreach ($prefecture_averages as $prefecture_average)
                     {{ $prefecture_average->prefecture->name }}
@@ -38,7 +38,7 @@
                     {{ $spot_average->spot_name }}
                     {{ $spot_average->evaluate }}
                 @endforeach
-        </div>--}}
+        </div>
         @foreach ($prefectures as $prefecture)
         @if ( $prefecture->name == '北海道') 
             <p>北海道・東北地方</p>
