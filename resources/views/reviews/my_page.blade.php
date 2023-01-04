@@ -38,6 +38,8 @@
                     <div class='nice'>
                         <p>{{ $nice->spot_name }}</p>
                         <p>{{ $nice->city_name }}</p>
+                        <p>{{ $review->date }}</p>
+                        <p>{{ $review->body }}</p>
                     </div>
                 @endforeach
             </div>
