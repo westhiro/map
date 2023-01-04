@@ -23,6 +23,12 @@
                     <p>{{ $review->city_name }}</p>
                     <p>{{ $review->date }}</p>
                     <p>{{ $review->body }}</p>
+                    <div class ='image_path'>
+                    @if($review->image_path)
+                    <h2>画像</h2>
+                    <img src="{{ $review->image_path }}"　width="150" height="150">
+                    @endif
+                </div>
                     <div class="edit">
                         <a href="/reviews/{{ $review->id }}/edit">編集</a>
                     </div>

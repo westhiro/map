@@ -44,12 +44,12 @@ class User extends Authenticatable
     
     public function nices()
     {
-        return $this->belongsToMany(Review::class, 'review_user');
+        return $this->belongsToMany(Review::class, 'user_reviews');
     }
     
     public function unnices()
     {
-        return $this->belongsToMany(Review::class, 'review_user');
+        return $this->belongsToMany(Review::class, 'user_reviews');
     }
 
     /**

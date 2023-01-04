@@ -56,15 +56,11 @@ class ReviewController extends Controller
     
     public function update(Request $request, Review $review)
     {
-        $image=$request->file('image');
-        if($image != null){
-            $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-            //dd($image_url);
-            $review['image_path'] = $image_url;
-        }
+        $review -> user_id = \Auth::id(); 
+        $image_path = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         //dd($request->file('image'));
         $input_review = $request['review'];
-        $input_review += ['user_id' => $request->user()->id];
+        $input_review += ['image_path' => $image_path];
         $review->fill($input_review)->save();
         return redirect('/my_page');
     }
